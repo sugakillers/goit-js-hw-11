@@ -1,7 +1,7 @@
 const baseURL = 'https://pixabay.com';
 
 
-export const fetchRequest = (value) => {
+export const fetchRequest = (value, page, perPage) => {
 
     const urlOptions = new URLSearchParams({
         key: "45468562-3d934deccae668c7d7f46b2f1",
@@ -9,6 +9,8 @@ export const fetchRequest = (value) => {
         image_type: 'photo',
         orientation: 'horizontal',
         safesearch: true,
+        page,
+        per_page: perPage,
     });
 
 

@@ -1,3 +1,4 @@
+
 import { fetchRequest } from "./js/pixabay-api";
 import { createGalleryCard } from "./js/render-functions";
 import iziToast from "izitoast";
@@ -8,6 +9,8 @@ const searchForm = document.querySelector(".search-form");
 const cardsList = document.querySelector(".gallery");
 const loader = document.querySelector(".loader");
 
+
+
 let gallery = new SimpleLightbox(".gallery li a", {
 captions: true,
 captionClass: "style-caption",
@@ -15,6 +18,18 @@ captionsData: 'alt',
 captionDelay: 250,
 disableRightClick: true,
 });
+
+const showElement = (element) => element.classList.remove('is-hidden');
+const hideElement = (element) => element.classList.add('is-hidden');
+
+const showError = (message, title = "Error") => {
+    iziToast.error({
+        message,
+        position: "topCenter",
+        title,
+        timeout: 4000,
+    });
+};
 
 const onSearchFormSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +58,7 @@ const onSearchFormSubmit = (event) => {
                     color: "red",
                     timeout: 4000,
                 });
+                cardsList.innerHTML = '';
             } else {
                 const info = data.hits.map(createGalleryCard).join("");
                 cardsList.innerHTML = info;

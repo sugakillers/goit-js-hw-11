@@ -143,6 +143,7 @@ margin: 36px auto auto auto;
 
 
 .loader {
+  visibility: hidden;
   width: 48px;
   height: 48px;
   margin: 40px auto 0 auto;
@@ -165,9 +166,6 @@ margin: 36px auto auto auto;
   border-left: 4px solid yellow;
   border-bottom: 4px solid transparent;
   animation: rotation 0.5s linear infinite reverse;
-}
-.loader.is-hidden {
-  display: none;
 }
 
 .is-open{
